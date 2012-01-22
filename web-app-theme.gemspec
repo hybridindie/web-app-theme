@@ -6,10 +6,12 @@ Gem::Specification.new do |s|
   s.name        = 'web-app-theme'
   s.version     = WebAppTheme::VERSION
   s.authors     = ['Andrea Franz']
+  s.date        = %q{2012-01-19}
   s.email       = ['andrea@gravityblast.com']
   s.homepage    = 'http://github.com/pilu/web-app-theme'
   s.summary     = %q{Web app theme generator}
   s.description = %q{Web app theme generator for rails projects}
+  s.rubygems_version = %q{1.5.0}
 
   s.rubyforge_project = 'web-app-theme'
 
@@ -18,9 +20,10 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
 
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.required_rubygems_version = '>= 1.3.6'
 
-  s.add_runtime_dependency 'rails', '~> 3.1.0.rc6'
+  s.add_runtime_dependency 'rails', '~> 3.1'
   s.add_runtime_dependency 'thor',  '~> 0.14'
 
   s.add_development_dependency 'bundler', '~> 1.0.0'

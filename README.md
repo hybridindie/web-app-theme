@@ -21,18 +21,19 @@ Add to your gemfile:
 
 #### Other versions
 You can use web-app-theme >= 0.6.2 with Rails 3. If you want to use it with rails 2, use web-app-theme 0.5.3
+
 Specify the web-app-theme gem in your Gemfile, only for :development and :test
 
     group :development, :test do
       gem 'web-app-theme', '>= 0.6.2'
     end
 
+If you want to use with Rails 3.1, add the following line in your `Gemfile`:
 
+    gem 'web-app-theme', :git => 'git://github.com/jweslley/web-app-theme.git'
 
 
 ## Usage
-
-
 
 ### Theme Generator
 
@@ -48,7 +49,7 @@ If you want to use another theme, instead of the default, you can use the `--the
 
     rails g web_app_theme:theme admin --theme="drastic-dark"
 
-You can specify the template engine with `--engine=name` option, where name can be erb (default) or haml:
+You can specify the template engine with `--engine=name` option, where name can be erb (default), haml or slim (requires haml2slim and hpricot):
 
     rails g web_app_theme:theme --engine=haml # you must specify haml in your Gemfile
 
@@ -56,6 +57,9 @@ If you want to generate the stylesheets of a specific theme without changing the
 
     rails g web_app_theme:theme --theme=bec --no-layout
 
+But, if you are using web-app-theme with Rails 3.1 and want to change your theme, you dont need to run the generator again, just edit the `app/assets/stylesheets/application.css` file specifying your new theme:
+
+    *= require 'web-app-theme/warehouse'
 
 You can specify the text used in the header with the `--app-name` option:
 
@@ -98,7 +102,7 @@ If the controller has a name different to the model used, specify the controller
     
     rails g web_app_theme:themed admin/items post
 
-If you use `will_paginate` for pagination use the `--will-paginate`:
+If you use a pagination gem like `will_paginate` or `kaminari`, use the `--will-paginate` or `--kaminari`:
 
     rails g web_app_theme:themed items post --will-paginate
 
